@@ -39,6 +39,14 @@ For a quick start using jsdelivr:
 
 > **`dictionary`** ; `array` : List of words for generator to pool from.
 
+#### Generator API
+
+> **`word()`**: Generate a random word given the provided dictionary.
+
+> **`sentence()`**: Generate a random sentence given the provided dictionary and sentence bounds.
+
+> **`paragraph()`**: Generate a random paragraph given the provided dictionary and paragraph bounds.
+
 The generator can be used like so:
 
 ```js
@@ -53,14 +61,6 @@ let word = generator.word()
 let sentence = generator.sentence()
 let paragraph = generator.paragraph()
 ```
-
-#### Generator API
-
-> **`word()`**: Generate a random word given the provided dictionary.
-
-> **`sentence()`**: Generate a random sentence given the provided dictionary and sentence bounds.
-
-> **`paragraph()`**: Generate a random paragraph given the provided dictionary and paragraph bounds.
 
 ### Contributors
 
