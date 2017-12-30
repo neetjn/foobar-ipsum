@@ -111,7 +111,7 @@ var _class = function () {
     opts.paragraphLowerBound = opts.paragraphLowerBound || 3;
     opts.paragraphUpperBound = opts.paragraphUpperBound || 7;
     opts.format = opts.format || 'plain';
-    opts.dictionary = opts.dictionary || _dictionary2.default;
+    opts.dictionary = opts.dictionary || _dictionary2.default.words;
     opts.suffix = opts.suffix;
 
     this.opts = opts;
@@ -136,9 +136,9 @@ var _class = function () {
      */
 
   }, {
-    key: 'randomWord',
-    value: function randomWord() {
-      return this.dictionary[this._randomInt(0, this.dictionary.length - 1)];
+    key: 'word',
+    value: function word() {
+      return this.opts.dictionary[this._randomInt(0, this.opts.dictionary.length - 1)];
     }
 
     /**
@@ -147,16 +147,16 @@ var _class = function () {
      */
 
   }, {
-    key: 'randomSentence',
-    value: function randomSentence() {
+    key: 'sentence',
+    value: function sentence() {
       var sentence = '';
       var bounds = {
         min: 0,
-        max: this._randomInt(this.sentenceLowerBound, this.sentenceUpperBound)
+        max: this._randomInt(this.opts.sentenceLowerBound, this.opts.sentenceUpperBound)
       };
 
       while (bounds.min < bounds.max) {
-        sentence += ' ' + this.randomWord(_dictionary2.default);
+        sentence += ' ' + this.word();
         bounds.min++;
       }
 
@@ -174,16 +174,16 @@ var _class = function () {
      */
 
   }, {
-    key: 'randomParagraph',
-    value: function randomParagraph() {
+    key: 'paragraph',
+    value: function paragraph() {
       var paragraph = '';
       var bounds = {
         min: 0,
-        max: this._randomInt(this.paragraphLowerBound, this.paragraphUpperBound)
+        max: this._randomInt(this.opts.paragraphLowerBound, this.opts.paragraphUpperBound)
       };
 
       while (bounds.min < bounds.max) {
-        paragraph += '. ' + randomSentence(_dictionary2.default, this.sentenceLowerBound, this.sentenceUpperBound);
+        paragraph += '. ' + this.sentence();
         bounds.min++;
       }
 

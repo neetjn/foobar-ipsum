@@ -1,4 +1,4 @@
-import words from './dictionary.json'
+import dictionary from './dictionary.json'
 
 export default class {
 
@@ -15,7 +15,7 @@ export default class {
     opts.paragraphLowerBound = opts.paragraphLowerBound || 3
     opts.paragraphUpperBound = opts.paragraphUpperBound || 7
     opts.format = opts.format || 'plain'
-    opts.dictionary = opts.dictionary || words
+    opts.dictionary = opts.dictionary || dictionary.words
     opts.suffix = opts.suffix
 
     this.opts = opts
@@ -34,23 +34,23 @@ export default class {
    * Generate a random word given the provided dictionary.
    * @returns {string}
    */
-  randomWord() {
-    return this.dictionary[this._randomInt(0, this.dictionary.length - 1)]
+  word() {
+    return this.opts.dictionary[this._randomInt(0, this.opts.dictionary.length - 1)]
   }
 
   /**
    * Generate a random sentence given the provided dictionary and sentence bounds.
    * @returns {string}
    */
-  randomSentence() {
+  sentence() {
     let sentence = ''
     const bounds = {
       min: 0,
-      max: this._randomInt(this.sentenceLowerBound, this.sentenceUpperBound)
+      max: this._randomInt(this.opts.sentenceLowerBound, this.opts.sentenceUpperBound)
     }
 
     while (bounds.min < bounds.max) {
-      sentence += ` ${this.randomWord(words)}`
+      sentence += ` ${this.word()}`
       bounds.min++
     }
 
@@ -66,15 +66,15 @@ export default class {
    * Generate a random paragraph given the provided dictionary and paragraph bounds.
    * @returns {string}
    */
-  randomParagraph() {
+  paragraph() {
     let paragraph = ''
     const bounds = {
       min: 0,
-      max: this._randomInt(this.paragraphLowerBound, this.paragraphUpperBound)
+      max: this._randomInt(this.opts.paragraphLowerBound, this.opts.paragraphUpperBound)
     }
 
     while (bounds.min < bounds.max) {
-      paragraph += `. ${randomSentence(words, this.sentenceLowerBound, this.sentenceUpperBound)}`
+      paragraph += `. ${this.sentence()}`
       bounds.min++
     }
 
