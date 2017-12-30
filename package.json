@@ -1,12 +1,11 @@
 {
   "name": "foobar-ipsum",
   "version": "1.0.0",
-  "description": "A javascript module for generating lorem ipsum placeholder text for both browsers and node.js projects. ",
+  "description": "Lightweight, universal javascript module for generating scaffholding text.",
   "author": "John Nolette <john@neetgroup.net> (https://github.com/neetjn)",
   "license": "MIT",
   "main": "./dist/foobar-ipsum.js",
   "devDependencies": {
-    "alea": "0.0.9",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.2",
@@ -34,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/knicklabs/node-lorem-ipsum.git"
+    "url": "git+https://github.com/neetjn/foobar-ipsum.git"
   },
   "keywords": [
     "lorem",

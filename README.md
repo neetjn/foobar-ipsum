@@ -1,57 +1,40 @@
-### lorem-ipsum.js
+# foobar-ipsum
 
-lorem-ipsum.js is a Node.js, Component.js, and React Native module for generating passages of lorem ipsum text. Lorem ipsum text is commonly used as placeholder text in publishing, graphic design, and web development.
+[![npm](https://img.shields.io/npm/dm/foobar-ipsum.svg)](https://www.npmjs.com/package/foobar-ipsum)
 
-### Using the Module (Node.js)
+[![build](https://travis-ci.org/neetjn/foobar-ipsum.svg?branch=master)](https://travis-ci.org/neetjn/foobar-ipsum/)
+[![npm version](https://badge.fury.io/js/foobar-ipsum.svg)](https://badge.fury.io/js/foobar-ipsum)
+[![codecov](https://codecov.io/gh/neetjn/foobar-ipsum/branch/master/graph/badge.svg)](https://codecov.io/gh/neetjn/foobar-ipsum)
 
-Install the lorem-ipsum.js module to use the library in your server-side Node.js projects.
+[![NPM](https://nodei.co/npm/foobar-ipsum.png)](https://nodei.co/npm/foobar-ipsum/)
 
-```bash
-cd ~/MyProject
-npm install lorem-ipsum
+## About
+
+**foobar-ipsum** is a lightweight, universal javascript module for generating scaffholding text.
+
+## Usage
+
+To install via Bower, simply do the following:
+```sh
+bower install foobar-ipsum
+```
+To install via NPM:
+```sh
+npm install foobar-ipsum
+```
+For a quick start using jsdelivr:
+```html
+<script src="https://cdn.jsdelivr.net/npm/foobar-ipsum/dist/foobar-ipsum.min.js"></script>
 ```
 
-Require the lorem-ipsum.js module and use it to generate a passage of lorem ipsum text.
+**foobar-ipsum** supports the following options:
 
 ```javascript
-var loremIpsum = require('lorem-ipsum')
-  , output     = loremIpsum();
-```
-
-### Using the Module (Component.js)
-
-Install the lorem-ipsum.js module to use the library client-side.
-
-```bash
-cd ~/MyProject
-component install knicklabs/lorem-ipsum.js
-```
-
-Require the lorem-ipsum.js module and use it to generate a passage of lorem ipsum text.
-
-```javascript
-var loremIpsum = require('knicklabs-lorem-ipsum.js')
-  , output     = loremIpsum();
-```
-
-### Customizing the Output with Options (Node.js/Component.js)
-
-You can pass options to the loremIpsum() function to fine-tune the output. The API is the same on client and server. See below:
-
-```javascript
-...
-output = loremIpsum({
-    count: 1                      // Number of words, sentences, or paragraphs to generate.
-  , units: 'sentences'            // Generate words, sentences, or paragraphs.
-  , sentenceLowerBound: 5         // Minimum words per sentence.
-  , sentenceUpperBound: 15        // Maximum words per sentence.
-  , paragraphLowerBound: 3        // Minimum sentences per paragraph.
-  , paragraphUpperBound: 7        // Maximum sentences per paragraph.
-  , format: 'plain'               // Plain text or html
-  , words: ['ad', 'dolor', ... ]  // Custom word dictionary. Uses dictionary.words (in lib/dictionary.js) by default.
-  , random: Math.random           // A PRNG function. Uses Math.random by default
-  , suffix: EOL                   // The character to insert between paragraphs. Defaults to default EOL for your OS.
-});
+> **`*sentenceLowerBound`** ; `int` : Minimum length of a sentence (words).
+> **`*sentenceUpperBound`** ; `int` : Maximum length of a sentence (words).
+> **`*paragraphLowerBound`** ; `int` : Minimum length of a paragraph (sentences).
+> **`*paragraphUpperBound`** ; `int` : Maximum length of a paragraph (sentences).
+> **`*dictionary`** ; `array` : List of words for generator to pool from.
 ```
 
 ### Using the CLI (Node.js)

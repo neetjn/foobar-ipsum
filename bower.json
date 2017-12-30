@@ -1,0 +1,26 @@
+{
+  "name": "foobar-ipsum",
+  "description": "Lightweight, universal javascript module for generating scaffholding text.",
+  "main": "./dist/foobar-ipsum.js",
+  "authors": [
+    "John Nolette <john@neetgroup.net> (https://github.com/neetjn)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "lorem",
+    "ipsum",
+    "placeholder",
+    "text",
+    "dummy",
+    "filler",
+    "foobar"
+  ],
+  "homepage": "https://github.com/neetjn/foobar-ipsum",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

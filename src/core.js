@@ -9,14 +9,11 @@ export default class {
    */
   constructor(opts) {
     opts = Object.assign({}, opts)
-    opts.count = opts.count || 1
     opts.sentenceLowerBound = opts.sentenceLowerBound || 5
     opts.sentenceUpperBound = opts.sentenceUpperBound || 15
     opts.paragraphLowerBound = opts.paragraphLowerBound || 3
     opts.paragraphUpperBound = opts.paragraphUpperBound || 7
-    opts.format = opts.format || 'plain'
     opts.dictionary = opts.dictionary || dictionary.words
-    opts.suffix = opts.suffix
 
     this.opts = opts
   }
