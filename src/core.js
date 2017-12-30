@@ -1,12 +1,12 @@
 import words from './dictionary.json'
 
-/**
- * Represents the core text generator.
- * @param {object} opts - Options for generator to consume.
- * @returns {string}
- */
 export default class {
 
+  /**
+   * Represents the core text generator.
+   * @param {object} opts - Options for generator to consume.
+   * @returns {string}
+   */
   constructor(opts) {
     opts = Object.assign({}, opts)
     opts.count = opts.count || 1
@@ -22,23 +22,39 @@ export default class {
     this.opts = opts
   }
 
+  /**
+   * Simple method to plurarize words.
+   * @param {string} str - Word to plurarize.
+   * @returns {string}
+   */
   _plurarize(str) {
     return str.endsWith('s') ? str : `${str}s`
   }
 
+  /**
+   * Generate a random integer given a minimum and maximum value.
+   * @param {int} min -
+   * @param {int} max -
+   */
   _randomInt(min, max) {
-    return Math.floor(random() * (max - min + 1) + min)
+    return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
+  /**
+   *
+   */
   randomWord() {
-    return this.dictionary[this._randomInteger(0, this.dictionary.length - 1)]
+    return this.dictionary[this._randomInt(0, this.dictionary.length - 1)]
   }
 
+  /**
+   *
+   */
   randomSentence() {
     let sentence = ''
     const bounds = {
       min: 0,
-      max: this._randomInteger(this.sentenceLowerBound, this.sentenceUpperBound)
+      max: this._randomInt(this.sentenceLowerBound, this.sentenceUpperBound)
     }
 
     while (bounds.min < bounds.max) {
@@ -54,6 +70,9 @@ export default class {
     return sentence
   }
 
+  /**
+   *
+   */
   randomParagraph() {
     var paragraph = ''
       , bounds = {min: 0, max: randomInteger(lowerBound, upperBound)};
@@ -151,12 +170,3 @@ function generator() {
 
   return string;
 };
-
-function simplePluralize(string) {
-  if (string.indexOf('s', string.length - 1) === -1) {
-    return string + 's';
-  }
-  return string;
-}
-
-module.exports = generator;
