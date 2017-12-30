@@ -10,7 +10,7 @@
 
 ## About
 
-**foobar-ipsum** is a lightweight, universal javascript module for generating scaffholding text.
+**foobar-ipsum** is a lightweight, universal javascript module for generating scaffolding text.
 
 ## Usage
 
