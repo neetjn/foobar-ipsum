@@ -77,20 +77,23 @@ export default class {
    * @returns {string}
    */
   randomParagraph() {
-    var paragraph = ''
-      , bounds = {min: 0, max: randomInteger(lowerBound, upperBound)};
+    let paragraph = ''
+    const bounds = {
+      min: 0,
+      max: this._randomInt(this.paragraphLowerBound, this.paragraphUpperBound)
+    }
 
     while (bounds.min < bounds.max) {
-      paragraph += '. ' + randomSentence(words, sentenceLowerBound, sentenceUpperBound);
-      bounds.min++;
+      paragraph += `. ${randomSentence(words, this.sentenceLowerBound, this.sentenceUpperBound)}`
+      bounds.min++
     }
 
     if (paragraph.length) {
-      paragraph = paragraph.slice(2);
-      paragraph += '.';
+      paragraph = paragraph.slice(2)
+      paragraph += '.'
     }
 
-    return paragraph;
+    return paragraph
   }
 
 
