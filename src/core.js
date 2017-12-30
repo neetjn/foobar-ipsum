@@ -33,22 +33,24 @@ export default class {
 
   /**
    * Generate a random integer given a minimum and maximum value.
-   * @param {int} min -
-   * @param {int} max -
+   * @param {int} min - Minimum bound for random integer.
+   * @param {int} max - Maximum bound for random integer.
    */
   _randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
   /**
-   *
+   * Generate a random word given the provided dictionary.
+   * @returns {string}
    */
   randomWord() {
     return this.dictionary[this._randomInt(0, this.dictionary.length - 1)]
   }
 
   /**
-   *
+   * Generate a random sentence given the provided dictionary and sentence bounds.
+   * @returns {string}
    */
   randomSentence() {
     let sentence = ''
@@ -71,7 +73,8 @@ export default class {
   }
 
   /**
-   *
+   * Generate a random paragraph given the provided dictionary and paragraph bounds.
+   * @returns {string}
    */
   randomParagraph() {
     var paragraph = ''
