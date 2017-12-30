@@ -1,10 +1,10 @@
 {
-  "name": "lorem-ipsum",
-  "version": "1.0.4",
-  "description": "Generates passages of lorem ipsum text suitable for use as placeholder copy in web pages, graphics, and more. Works in the browser, NodeJS, and React Native.",
-  "author": "Nickolas Kenyeres <nkenyeres@gmail.com> (http://knicklabs.github.com)",
-  "license": "MIT/X11",
-  "main": "./lib/generator",
+  "name": "foobar-ipsum",
+  "version": "1.0.0",
+  "description": "A javascript module for generating lorem ipsum placeholder text for both browsers and node.js projects. ",
+  "author": "John Nolette <john@neetgroup.net> (https://github.com/neetjn)",
+  "license": "MIT",
+  "main": "./dist/foobar-ipsum.js",
   "dependencies": {
     "optimist": "~0.3.5"
   },
