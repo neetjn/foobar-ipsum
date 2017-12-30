@@ -54,7 +54,7 @@ let sentence = generator.sentence()
 let paragraph = generator.paragraph()
 ```
 
-### Generator API
+#### Generator API
 
 > **`word()`**: Generate a random word given the provided dictionary.
 
