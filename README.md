@@ -29,79 +29,61 @@ For a quick start using jsdelivr:
 
 **foobar-ipsum** supports the following options:
 
-```javascript
-> **`*sentenceLowerBound`** ; `int` : Minimum length of a sentence (words).
-> **`*sentenceUpperBound`** ; `int` : Maximum length of a sentence (words).
-> **`*paragraphLowerBound`** ; `int` : Minimum length of a paragraph (sentences).
-> **`*paragraphUpperBound`** ; `int` : Maximum length of a paragraph (sentences).
-> **`*dictionary`** ; `array` : List of words for generator to pool from.
+> **`sentenceLowerBound`** ; `int` : Minimum length of a sentence (words).
+
+> **`sentenceUpperBound`** ; `int` : Maximum length of a sentence (words).
+
+> **`paragraphLowerBound`** ; `int` : Minimum length of a paragraph (sentences).
+
+> **`paragraphUpperBound`** ; `int` : Maximum length of a paragraph (sentences).
+
+> **`dictionary`** ; `array` : List of words for generator to pool from.
+
+The generator can be used like so:
+
+```js
+import foobarIpsum from 'foobar-ipsum'
+
+const generator = foobarIpsum({
+  sentenceUpperBound: 5,
+  paragraphUpperBound: 6,
+})
+
+let word = generator.word()
+let sentence = generator.sentence()
+let paragraph = generator.paragraph()
 ```
 
-### Using the CLI (Node.js)
+### Generator API
 
-lorem-ipsum.js includes a command line interface for generating passages of lorem ipsum text. Install the module globally to take advantage of this feature.
+> **`word()`**: Generate a random word given the provided dictionary.
 
-```bash
-npm install lorem-ipsum --global
-```
+> **`sentence()`**: Generate a random sentence given the provided dictionary and sentence bounds.
 
-Execute the statement `lorem-ipsum` from your terminal to generate a passage of lorem ipsum text. You can pass arguments to the program to fine-tune the output.
+> **`paragraph()`**: Generate a random paragraph given the provided dictionary and paragraph bounds.
 
-```bash
-lorem-ipsum --units words --count 100 --copy --format html
-```
+### Contributors
 
-See below for a description of the arguments to the program.
+* **John Nolette** (john@neetgroup.net)
 
-<table>
-  <tr>
-    <th>Argument</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>--count</td>
-    <td>The <strong>number</strong> of words, sentences or paragraphs to generate</td>
-  </tr>
-  <tr>
-    <td>--units</td>
-    <td>Generate <strong>words</strong>, <strong>sentences</strong> or <strong>paragraphs</strong></td>
-  </tr>
-  <tr>
-    <td>--copy</td>
-    <td><strong>Copy</strong> the output to the system clipboard</td>
-  </tr>
-  <tr>
-    <td>--format</td>
-    <td><strong>html</strong> or <strong>plain</strong> text format</td>
-  </tr>
-</table>
+### Fork Contributors
 
-You may now also use a short form when running lorem-ipsum.js from the command line. Here's some examples:
+* **Nickolas Kenyeres**
+* **Marco Biedermann**
+* **Martin Grandrath**
+* **Florian Wendelborn**
+* **Melvin Tiong**
 
-```
-lorem-ipsum 1 word
-```
+Contributing guidelines are as follows,
 
-```
-lorem-ipsum 15 sentences --copy
-```
+* Any new features must include either a unit test, e2e test, or both.
+* Branches for bugs and features should be structued like so, `issue-x-username`.
+* Before putting in a pull request, be sure to verify you've built all your changes.
 
-```
-lorem-ipsum 5 paragraphs --copy --format html
-```
+  Travis will build your changes before testing and publishing, but bower pulls from this repository directly.
 
-### Notes
+* Include your name and email in the contributors list.
 
-The copy feature requires that you have xclip installed if you are using lorem-ipsum.js on Linux. The feature will work out of the box on Mac and Windows systems.
+---
+Copyright (c) 2017 John Nolette Licensed under the MIT license.
 
-### License
-
-This software is licensed under the MIT license.
-
-Copyright (c) 2012-2017 Nickolas Kenyeres
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
