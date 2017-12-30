@@ -1,3 +1,12 @@
+import words from './dictionary.json'
+
+/**
+ *
+ */
+export default function(opts) {
+
+}
+
 function generator() {
   var options = (arguments.length) ? arguments[0] : {}
     , count = options.count || 1
