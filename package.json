@@ -23,10 +23,6 @@
     "optimist": "~0.3.5",
     "webpack": "^3.8.1"
   },
-  "optionalDependencies": {},
-  "bin": {
-    "lorem-ipsum": "bin/lorem-ipsum.bin.js"
-  },
   "scripts": {
     "build:prod": "node_modules/.bin/cross-env NODE_ENV=production node_modules/.bin/webpack --config build/webpack.conf.js",
     "build:dev": "node_modules/.bin/webpack --config build/webpack.conf.js",
