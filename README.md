@@ -14,10 +14,6 @@
 
 ## Usage
 
-To install via Bower, simply do the following:
-```sh
-bower install foobar-ipsum
-```
 To install via NPM:
 ```sh
 npm install foobar-ipsum
