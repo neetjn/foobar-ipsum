@@ -9,17 +9,17 @@ cache:
   directories:
     - node_modules
 before_script:
-  - 'export DISPLAY=:99.0'
-  - 'sh -e /etc/init.d/xvfb start'  # start xvfb for karma tests
-  - sleep 3 # give xvfb some time to start
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
 script:
   - npm run build
   - npm run test
   - if [ "$TRAVIS_BRANCH" == "master" ]; then codecov; fi
-# deploy:
-#   provider: npm
-#   email: john@neetgroup.net
-#   api_key:
-#     secure: X17ZBPpbYGxXtXJ4l/XqYB3hZiba9b9U30s1AyqwJuT38PvVp96ECUmQZOuVCTEVJACk46ouZtw/uhewKlYVKbyrZXn37xsUZ6jWxICEjK+h4AvU3vBqdbFnjm3UpkCZJ7zK+GwIl0MahH09W6mcJG1/jXZAHwCz3pvPqFrCmGKHZhecnKbuySASTQV6jsLQil7EOJu5W3xUHxPU9OclHZEOnUw5jgdnS3nDYu7/EOQm2/aWNHXz+FBJYyyyJsQ7gUfE9FiPUMxVIX5n5nVaOUjAwhJNjsej8xR0ew99ynm7+1nwJRFCzdCFK8m2/+vWkcFqsB+JuysseGrs/brq82dA0W8xTHyCheGZZ/l/L4rw1WDx/9FVfsyEAvpSkKosKP33k5w+YEhchN8xALJx9bOlPDHQnJRWvKJFXxxz3cd9EFT5ekTh9g/da7XBSA1RknOq+Y6hzfUmtXBefXGzQk5zNoNC9LlkiAGH68hamQv7dAFrP5wVcyCoMaPsG/Lu3EZ96lqAMKrgDrVE/bNfDGDI1Y0bwxaWcFZhUK2NKJtw46jowONbmyK2AGfgCplr1P/lwMR+pV4UphqksRDP05usiojFJ3g99/qeUqnXqt38xLGCLWOn0S4w2dJdXeyVXCAsOLMAnPERTG87MxQXAtUfcAAVRL5xMtzduWeDvp8=
-#   on:
-#     branch: master
+deploy:
+  provider: npm
+  email: john@neetgroup.net
+  api_key:
+    secure: Q/b3byMM9NhJf4noh+Z9uERXfeS/COzSE442wlS8qmCQc3V4DInndIP8vRBDgs1hTOfkH6Ro8f8DBwLCVaIlSiD4oNlfd+25jgVQ30u7AYW4muwEPaEpgkrrAi+Sh9/YuYW3Rvi4uDm1cUw8+mlVBAZcyIq4gnKJqap5Yspiks0TwhqI2Dx9btsqhRM4c3gLqz15Ba9oEwSTgeXOzvQ09nironXrWl/EF/7/JvfDCYtS0jahNPcWgubojS7g8yELp5dG42Xyq1gifOJsBqcj2m0VVTfqsqm3YDPSCmDkq56SpsySSxYItrpOe30JsPFx+TaIGIQYXe7MKGiggPf9A6aEGNWuHKn6anXX7akpgYlevQAbYSrw1lKZioHS67IrJgMqAdcP7ERhQoxdVif6QFQGP7XH5FsdhHJudspr/Mzbbv8DBytuFoo8joweX6L5Bj0KUuP4jULG0PTwoGs0Drz6WX4M1LtiJbgm5HMiM09fflnNzzORqR94D4uELl5qSuTjqJ4XXtFwYehtMhrlpW+rjjMowVmgV4/KQmBQeL4u1MujHs/JcXrw73jB1Mz6/I5GmQFoIXQz4z0TfYJsftkahu6kVWN9swqbp2c9O8wZmcvc1aVaH6EA/q5v7QWHEpWsN78oKEAl6LTOim/qhtnSYhq21G9ZF+eqo9Vz+qM=
+  on:
+    branch: master
