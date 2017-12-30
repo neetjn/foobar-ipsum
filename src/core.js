@@ -1,62 +1,80 @@
 import words from './dictionary.json'
 
 /**
- *
+ * Represents the core text generator.
+ * @param {object} opts - Options for generator to consume.
+ * @returns {string}
  */
-export default function(opts) {
+export default class {
+
+  constructor(opts) {
+    opts = Object.assign({}, opts)
+    opts.count = opts.count || 1
+    opts.units = this._plurarize(opts.units.toLowerCase()) || 'sentences'
+    opts.sentenceLowerBound = opts.sentenceLowerBound || 5
+    opts.sentenceUpperBound = opts.sentenceUpperBound || 15
+    opts.paragraphLowerBound = opts.paragraphLowerBound || 3
+    opts.paragraphUpperBound = opts.paragraphUpperBound || 7
+    opts.format = opts.format || 'plain'
+    opts.dictionary = opts.dictionary || words
+    opts.suffix = opts.suffix
+
+    this.opts = opts
+  }
+
+  _plurarize(str) {
+    return str.endsWith('s') ? str : `${str}s`
+  }
+
+  _randomInt(min, max) {
+    return Math.floor(random() * (max - min + 1) + min)
+  }
+
+  randomWord() {
+    return this.dictionary[this._randomInteger(0, this.dictionary.length - 1)]
+  }
+
+  randomSentence() {
+    let sentence = ''
+    const bounds = {
+      min: 0,
+      max: this._randomInteger(this.sentenceLowerBound, this.sentenceUpperBound)
+    }
+
+    while (bounds.min < bounds.max) {
+      sentence += ` ${this.randomWord(words)}`
+      bounds.min++
+    }
+
+    if (sentence.length) {
+      sentence = sentence.slice(1)
+      sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1)
+    }
+
+    return sentence
+  }
+
+  randomParagraph() {
+    var paragraph = ''
+      , bounds = {min: 0, max: randomInteger(lowerBound, upperBound)};
+
+    while (bounds.min < bounds.max) {
+      paragraph += '. ' + randomSentence(words, sentenceLowerBound, sentenceUpperBound);
+      bounds.min++;
+    }
+
+    if (paragraph.length) {
+      paragraph = paragraph.slice(2);
+      paragraph += '.';
+    }
+
+    return paragraph;
+  }
+
 
 }
 
 function generator() {
-  var options = (arguments.length) ? arguments[0] : {}
-    , count = options.count || 1
-    , units = options.units || 'sentences'
-    , sentenceLowerBound = options.sentenceLowerBound || 5
-    , sentenceUpperBound = options.sentenceUpperBound || 15
-    , paragraphLowerBound = options.paragraphLowerBound || 3
-    , paragraphUpperBound = options.paragraphUpperBound || 7
-    , format = options.format || 'plain'
-    , words = options.words || require('./dictionary').words
-    , random = options.random || Math.random
-    , suffix = options.suffix;
-
-  if (!suffix) {
-    var isNode = typeof module !== 'undefined' && module.exports;
-    var isReactNative = typeof product !== 'undefined' && product.navigator === 'ReactNative';
-
-    if (!isReactNative && isNode) {
-      suffix = require('os').EOL;
-    } else {
-      suffix = '\n';
-    }
-  }
-
-  units = simplePluralize(units.toLowerCase());
-
-  function randomInteger(min, max) {
-    return Math.floor(random() * (max - min + 1) + min);
-  };
-
-  function randomWord(words) {
-    return words[randomInteger(0, words.length - 1)];
-  };
-
-  function randomSentence(words, lowerBound, upperBound) {
-    var sentence = ''
-      , bounds = {min: 0, max: randomInteger(lowerBound, upperBound)};
-
-    while (bounds.min < bounds.max) {
-      sentence += ' ' + randomWord(words);
-      bounds.min++;
-    }
-
-    if (sentence.length) {
-      sentence = sentence.slice(1);
-      sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
-    }
-
-    return sentence;
-  };
 
   function randomParagraph(words, lowerBound, upperBound, sentenceLowerBound, sentenceUpperBound) {
     var paragraph = ''
