@@ -35,9 +35,9 @@ For a quick start using jsdelivr:
 
 > **`word()`**: Generate a random word given the provided dictionary.
 
-> **`sentence(size = null)`**: Generate a random sentence given the provided dictionary and sentence bounds.
+> **`sentence(size = null)`**: Create a random sentence given the provided dictionary and sentence bounds.
 
-> **`paragraph(size = null, eoc = null)`**: Generate a random paragraph given the provided dictionary and paragraph bounds.
+> **`paragraph(size = null, eoc = null)`**: Create a random paragraph given the provided dictionary and paragraph bounds.
 
 The generator can be used like so:
 
