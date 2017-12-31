@@ -25,9 +25,9 @@ For a quick start using jsdelivr:
 
 **foobar-ipsum** supports the following options:
 
-> **`size.sentence`** ; `int` (15) : Length of a sentence (words).
+> **`size.sentence`** ; `int` *15* : Length of a sentence (words).
 
-> **`size.paragraph`** ; `int` (3) : Length of a paragraph (sentences).
+> **`size.paragraph`** ; `int` *3* : Length of a paragraph (sentences).
 
 > **`dictionary`** ; `array` : List of words for generator to pool from.
 
