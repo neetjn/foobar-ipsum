@@ -25,13 +25,9 @@ For a quick start using jsdelivr:
 
 **foobar-ipsum** supports the following options:
 
-> **`sentenceLowerBound`** ; `int` : Minimum length of a sentence (words).
+> **`size.sentence`** ; `int` (15) : Length of a sentence (words).
 
-> **`sentenceUpperBound`** ; `int` : Maximum length of a sentence (words).
-
-> **`paragraphLowerBound`** ; `int` : Minimum length of a paragraph (sentences).
-
-> **`paragraphUpperBound`** ; `int` : Maximum length of a paragraph (sentences).
+> **`size.paragraph`** ; `int` (3) : Length of a paragraph (sentences).
 
 > **`dictionary`** ; `array` : List of words for generator to pool from.
 
@@ -39,9 +35,9 @@ For a quick start using jsdelivr:
 
 > **`word()`**: Generate a random word given the provided dictionary.
 
-> **`sentence()`**: Generate a random sentence given the provided dictionary and sentence bounds.
+> **`sentence(size = null)`**: Generate a random sentence given the provided dictionary and sentence bounds.
 
-> **`paragraph()`**: Generate a random paragraph given the provided dictionary and paragraph bounds.
+> **`paragraph(size = null, eoc = null)`**: Generate a random paragraph given the provided dictionary and paragraph bounds.
 
 The generator can be used like so:
 
@@ -49,13 +45,15 @@ The generator can be used like so:
 import foobarIpsum from 'foobar-ipsum'
 
 const generator = foobarIpsum({
-  sentenceUpperBound: 5,
-  paragraphUpperBound: 6,
+  size: {
+    sentence: 10,
+    paragraph: 4
+  }
 })
 
 let word = generator.word()
 let sentence = generator.sentence()
-let paragraph = generator.paragraph()
+let paragraph = generator.paragraph(null, '<br />')
 ```
 
 ### Contributors
