@@ -29,7 +29,7 @@ export default class {
    * @returns {string}
    */
   sentence(size = null) {
-    let sentence = [... Array(size || this.opts.size.sentence)]
+    const sentence = [... Array(size || this.opts.size.sentence)]
       .map(() => ` ${this.word()}`)
       .join('')
       .slice(1)
