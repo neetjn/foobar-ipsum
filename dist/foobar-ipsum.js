@@ -92,6 +92,8 @@ var _dictionary2 = _interopRequireDefault(_dictionary);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var _class = function () {
@@ -105,37 +107,23 @@ var _class = function () {
     _classCallCheck(this, _class);
 
     opts = Object.assign({}, opts);
-    opts.sentenceLowerBound = opts.sentenceLowerBound || 5;
-    opts.sentenceUpperBound = opts.sentenceUpperBound || 15;
-    opts.paragraphLowerBound = opts.paragraphLowerBound || 3;
-    opts.paragraphUpperBound = opts.paragraphUpperBound || 7;
+    opts.size = opts.size || {};
+    opts.size.sentence = opts.size.sentence || 15;
+    opts.size.paragraph = opts.size.paragraph || 3;
     opts.dictionary = opts.dictionary || _dictionary2.default.words;
-
     this.opts = opts;
   }
 
   /**
-   * Generate a random integer given a minimum and maximum value.
-   * @param {int} min - Minimum bound for random integer.
-   * @param {int} max - Maximum bound for random integer.
+   * Generate a random word given the provided dictionary.
+   * @returns {string}
    */
 
 
   _createClass(_class, [{
-    key: '_randomInt',
-    value: function _randomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-
-    /**
-     * Generate a random word given the provided dictionary.
-     * @returns {string}
-     */
-
-  }, {
     key: 'word',
     value: function word() {
-      return this.opts.dictionary[this._randomInt(0, this.opts.dictionary.length - 1)];
+      return this.opts.dictionary[Math.floor(Math.random() * this.opts.dictionary.length)];
     }
 
     /**
@@ -146,50 +134,37 @@ var _class = function () {
   }, {
     key: 'sentence',
     value: function sentence() {
-      var sentence = '';
-      var bounds = {
-        min: 0,
-        max: this._randomInt(this.opts.sentenceLowerBound, this.opts.sentenceUpperBound)
-      };
+      var _this = this;
 
-      while (bounds.min < bounds.max) {
-        sentence += ' ' + this.word();
-        bounds.min++;
-      }
+      var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-      if (sentence.length) {
-        sentence = sentence.slice(1);
-        sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
-      }
-
-      return sentence;
+      var sentence = [].concat(_toConsumableArray(Array(size || this.opts.size.sentence))).map(function () {
+        return ' ' + _this.word();
+      }).join('').slice(1);
+      return sentence.charAt(0).toUpperCase() + sentence.slice(1);
     }
 
     /**
      * Generate a random paragraph given the provided dictionary and paragraph bounds.
+     * @param {int} size - Optional paragraph size specification in number of sentences.
+     * @param {string} eoc - End of character for each paragraph.
      * @returns {string}
      */
 
   }, {
     key: 'paragraph',
     value: function paragraph() {
-      var paragraph = '';
-      var bounds = {
-        min: 0,
-        max: this._randomInt(this.opts.paragraphLowerBound, this.opts.paragraphUpperBound)
-      };
+      var _this2 = this;
 
-      while (bounds.min < bounds.max) {
-        paragraph += '. ' + this.sentence();
-        bounds.min++;
-      }
+      var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var eoc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-      if (paragraph.length) {
-        paragraph = paragraph.slice(2);
-        paragraph += '.';
-      }
-
-      return paragraph;
+      size = size || this.opts.size.paragraph;
+      return [].concat(_toConsumableArray(Array(size))).map(function () {
+        return _this2.sentence() + '. ';
+      }).map(function (sentence, index) {
+        if (!((index + 1) % 4)) return '' + eoc + sentence;else return sentence;
+      }).join('').trim();
     }
   }]);
 

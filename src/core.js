@@ -9,6 +9,7 @@ export default class {
    */
   constructor(opts) {
     opts = Object.assign({}, opts)
+    opts.size = opts.size || {}
     opts.size.sentence = opts.size.sentence || 15
     opts.size.paragraph = opts.size.paragraph || 3
     opts.dictionary = opts.dictionary || dictionary.words
@@ -28,8 +29,8 @@ export default class {
    * @returns {string}
    */
   sentence(size = null) {
-    let sentence = Array(size || this.opts.size.sentence)
-      .map(` ${this.word()}`)
+    let sentence = [... Array(size || this.opts.size.sentence)]
+      .map(() => ` ${this.word()}`)
       .join('')
       .slice(1)
     return sentence.charAt(0).toUpperCase() + sentence.slice(1)
@@ -38,16 +39,19 @@ export default class {
   /**
    * Generate a random paragraph given the provided dictionary and paragraph bounds.
    * @param {int} size - Optional paragraph size specification in number of sentences.
+   * @param {string} eoc - End of character for each paragraph.
    * @returns {string}
    */
-  paragraph(size = null) {
+  paragraph(size = null, eoc = null) {
     size = size || this.opts.size.paragraph
-    const paragraph = Array()
-      .map(`. ${this.sentence()}`)
-      .join('')
-      .slice(2)
-    // # left here, add character split for each finished paragraph
-    for (let i = 0; i < size)
+    return [... Array(size)]
+      .map(() => `${this.sentence()}. `)
+      .map((sentence, index) => {
+        if (!((index + 1) % 4))
+          return `${eoc}${sentence}`
+        else
+          return sentence
+      }).join('').trim()
   }
 
 }
