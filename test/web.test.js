@@ -12,11 +12,11 @@ describe('Given an instance of the foobar-ipsum generator', function() {
 
   it('should produce sentences within our desired boundaries', function() {
     const bounds = Math.floor(Math.random() * (10 - 1) + 1)
-    const generator = new foobarIpsum(
+    const generator = new foobarIpsum({
       size: {
         sentence: bounds
       }
-    )
+    })
 
     const sentence = generator.sentence()
     expect(sentence.split(' ').length).toBe(bounds)
