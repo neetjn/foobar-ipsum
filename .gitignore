@@ -57,5 +57,11 @@ typings/
 # dotenv environment variables file
 .env
 
+# cloud9 ide
+.c9/
+
+# vscode
 .vscode/
+
+# code cov
 coverage/

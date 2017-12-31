@@ -13,8 +13,9 @@ describe('Given an instance of the foobar-ipsum generator', function() {
   it('should produce sentences within our desired boundaries', function() {
     const bounds = Math.floor(Math.random() * (10 - 1) + 1)
     const generator = new foobarIpsum({
-      sentenceLowerBound: bounds,
-      sentenceUpperBound: bounds
+      size: {
+        sentence: bounds
+      }
     })
 
     const sentence = generator.sentence()
@@ -24,8 +25,9 @@ describe('Given an instance of the foobar-ipsum generator', function() {
   it('should produce paragraphs within our desired boundaries', function() {
     const bounds = Math.floor(Math.random() * (5 - 1) + 1)
     const generator = new foobarIpsum({
-      paragraphLowerBound: bounds,
-      paragraphUpperBound: bounds
+      size: {
+        paragraph: bounds
+      }
     })
 
     const paragraph = generator.paragraph()
