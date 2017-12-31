@@ -1,6 +1,6 @@
 {
   "name": "foobar-ipsum",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lightweight, universal javascript module for generating scaffolding text.",
   "author": "John Nolette <john@neetgroup.net> (https://github.com/neetjn)",
   "license": "MIT",
